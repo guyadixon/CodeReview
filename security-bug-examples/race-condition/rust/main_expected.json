@@ -1,0 +1,73 @@
+{
+  "source_file": "main.rs",
+  "language": "rust",
+  "vulnerability_class": "race-condition",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Unsafe Send/Sync wrapper bypasses borrow checker",
+      "line_start": 6,
+      "line_end": 18,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "UnsafeSendCell manually implements Send and Sync for UnsafeCell, bypassing Rust's thread safety guarantees"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic balance update in bank simulation",
+      "line_start": 39,
+      "line_end": 53,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-yield-write on shared BankAccount through unsafe cell causes balance corruption under concurrent access"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in ticket reservation",
+      "line_start": 73,
+      "line_end": 82,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Availability check and decrement through unsafe cell are not atomic, allowing overselling of tickets"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic shared counter increment",
+      "line_start": 100,
+      "line_end": 107,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-yield-write on shared counter through unsafe cell causes lost updates"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-thread-safe global singleton initialization",
+      "line_start": 119,
+      "line_end": 128,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Flag-guarded static mut initialization without synchronization allows multiple initializations and data loss"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in inventory order processing",
+      "line_start": 155,
+      "line_end": 163,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Stock check and decrement through unsafe cell are not atomic, allowing inventory to go negative"
+    }
+  ]
+}

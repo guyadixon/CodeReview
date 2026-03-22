@@ -1,0 +1,73 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "injection/command-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via exec in ping endpoint",
+      "line_start": 17,
+      "line_end": 17,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied host parameter concatenated directly into child_process.exec() shell command without sanitization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via exec in DNS lookup",
+      "line_start": 36,
+      "line_end": 37,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Domain parameter interpolated into template literal passed to exec() while only record type is validated"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Multi-parameter command injection in log search helper",
+      "line_start": 47,
+      "line_end": 51,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Helper function constructs grep command with user-controlled keyword and logPath via template literals with insufficient quoting"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via exec in archive endpoint",
+      "line_start": 99,
+      "line_end": 100,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "FilePath from request body interpolated into tar command via template literal and exec() while only name is sanitized"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via exec in port check",
+      "line_start": 131,
+      "line_end": 131,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Host parameter from request body interpolated into nc command via template literal and exec()"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via complex shell pipeline in certificate check",
+      "line_start": 142,
+      "line_end": 142,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Hostname parameter interpolated three times into complex openssl shell pipeline with redirections via template literal"
+    }
+  ]
+}

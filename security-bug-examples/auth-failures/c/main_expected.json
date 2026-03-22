@@ -1,0 +1,62 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "auth-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-798",
+      "owasp": "A07",
+      "title": "Hardcoded admin API key and service passphrase",
+      "line_start": 13,
+      "line_end": 14,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Hardcoded ADMIN_API_KEY and SERVICE_PASSPHRASE string constants used for privileged authentication bypass"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-287",
+      "owasp": "A07",
+      "title": "Custom weak hash function used for password storage",
+      "line_start": 42,
+      "line_end": 55,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Custom non-cryptographic hash function used for password storage instead of a proper password hashing algorithm"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-307",
+      "owasp": "A07",
+      "title": "No rate limiting on login endpoint",
+      "line_start": 152,
+      "line_end": 184,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Login handler accepts unlimited authentication attempts without rate limiting or account lockout"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-798",
+      "owasp": "A07",
+      "title": "Hardcoded service passphrase bypasses token verification",
+      "line_start": 189,
+      "line_end": 192,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Token verification handler accepts hardcoded SERVICE_PASSPHRASE as valid authentication"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-287",
+      "owasp": "A07",
+      "title": "Password reset token exposed in API response",
+      "line_start": 224,
+      "line_end": 228,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Password reset token returned directly in API response instead of being sent via email only"
+    }
+  ]
+}

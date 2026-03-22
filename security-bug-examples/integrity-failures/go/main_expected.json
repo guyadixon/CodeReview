@@ -1,0 +1,51 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "integrity-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Gob Deserialization of Untrusted Pipeline Import",
+      "line_start": 231,
+      "line_end": 232,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "User-supplied base64 payload deserialized with gob.NewDecoder().Decode() with registered interface types enabling potential DoS and type confusion"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Gob Deserialization in Object Store Retrieval",
+      "line_start": 370,
+      "line_end": 371,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Object store retrieval deserializes potentially tampered gob-encoded data across two separate endpoints without integrity verification"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Remote Plugin Download and Loading",
+      "line_start": 409,
+      "line_end": 435,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Plugin endpoint downloads shared object from user-supplied URL and loads it via plugin.Open() enabling arbitrary code execution through init functions"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Shell Command Injection via Script Execution",
+      "line_start": 488,
+      "line_end": 488,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Script execution endpoint passes user-supplied input directly to exec.Command with sh -c enabling arbitrary shell command execution"
+    }
+  ]
+}

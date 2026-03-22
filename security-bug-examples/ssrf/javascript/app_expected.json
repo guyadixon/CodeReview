@@ -1,0 +1,62 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "ssrf",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Direct URL fetch from user input",
+      "line_start": 77,
+      "line_end": 94,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied URL passed directly to http/https.get via fetchUrl without any validation"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Incomplete blocklist bypass in URL preview",
+      "line_start": 96,
+      "line_end": 119,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Preview endpoint blocks only localhost and 127.0.0.1 but allows other loopback representations, private ranges, and metadata IPs"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Webhook callback without re-validation",
+      "line_start": 153,
+      "line_end": 189,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Webhook test endpoint fetches stored callback URL without re-validating the destination, enabling two-step SSRF"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Metadata endpoint check bypassable via DNS rebinding",
+      "line_start": 191,
+      "line_end": 217,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Import endpoint checks hostname string for 169.254 prefix but is bypassable via DNS rebinding or alternative hostnames"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Service proxy with arbitrary base_url fallback",
+      "line_start": 219,
+      "line_end": 245,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Proxy endpoint falls back to user-supplied baseUrl when service name is unrecognized, enabling arbitrary SSRF"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "integer-overflow",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in line item total calculation",
+      "line_start": 42,
+      "line_end": 43,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int quantity by int unit_price_cents can exceed INT_MAX"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in subtotal accumulation",
+      "line_start": 45,
+      "line_end": 51,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Running int sum of line totals overflows when multiple large items are accumulated"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in discount calculation",
+      "line_start": 53,
+      "line_end": 55,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Intermediate multiplication of large subtotal by discount_percent overflows int"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in buffer size calculation",
+      "line_start": 57,
+      "line_end": 58,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "int multiplication of item_count * item_size overflows before cast to size_t for malloc"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in shipping cost calculation",
+      "line_start": 68,
+      "line_end": 71,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Multiplication of weight_grams by distance_km overflows int for large shipments"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Truncation in currency conversion result",
+      "line_start": 93,
+      "line_end": 96,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "64-bit intermediate result truncated to int on return, losing data for large conversions"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Unchecked narrowing in parse_quantity",
+      "line_start": 99,
+      "line_end": 101,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "strtol returns long cast to int without range validation, truncating large values"
+    }
+  ]
+}

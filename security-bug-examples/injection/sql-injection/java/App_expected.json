@@ -1,0 +1,51 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "injection/sql-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via direct string concatenation in product search",
+      "line_start": 57,
+      "line_end": 58,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied request parameter concatenated directly into SQL LIKE clause without parameterization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via category concatenation and unvalidated ORDER BY direction",
+      "line_start": 74,
+      "line_end": 79,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Category parameter concatenated into WHERE clause and order direction interpolated into ORDER BY without validation"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via StringBuilder append in order listing filters",
+      "line_start": 100,
+      "line_end": 108,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Status, dateFrom, and dateTo parameters appended directly into StringBuilder SQL query despite base query using parameterization"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via direct concatenation in DELETE statement",
+      "line_start": 161,
+      "line_end": 162,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Category request parameter concatenated directly into DELETE SQL statement without parameterization"
+    }
+  ]
+}

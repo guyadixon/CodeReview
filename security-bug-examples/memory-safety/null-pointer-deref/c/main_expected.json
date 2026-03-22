@@ -1,0 +1,62 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "memory-safety/null-pointer-deref",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in get_config_value",
+      "line_start": 113,
+      "line_end": 115,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "find_config returns NULL for missing key, then cfg->value is dereferenced without NULL check"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in print_config_length",
+      "line_start": 117,
+      "line_end": 119,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "find_config returns NULL for missing key, then cfg->value is passed to strlen without NULL check"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in merge_values",
+      "line_start": 121,
+      "line_end": 128,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Two find_config calls can each return NULL, both dereferenced in strlen and snprintf without checks"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in load_from_input via parse_line error",
+      "line_start": 103,
+      "line_end": 111,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "parse_line returns NULL key and value on malformed input, passed to printf and add_config without error checking"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in export_configs after allocation failure",
+      "line_start": 130,
+      "line_end": 148,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Buffer set to NULL on realloc failure then passed to printf, and initial malloc failure not checked before use"
+    }
+  ]
+}

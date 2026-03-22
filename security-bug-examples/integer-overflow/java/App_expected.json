@@ -1,0 +1,84 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "integer-overflow",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in gross pay calculation",
+      "line_start": 33,
+      "line_end": 39,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Chained multiplication of overtimeHours * hourlyRateCents * overtimeMultiplierPct overflows int"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in tax calculation",
+      "line_start": 42,
+      "line_end": 43,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int grossCents by int taxRateBP can exceed Integer.MAX_VALUE"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in total payroll accumulation",
+      "line_start": 52,
+      "line_end": 57,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Running int sum of gross pay values overflows when multiple large entries are accumulated"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in bonus calculation",
+      "line_start": 60,
+      "line_end": 63,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int baseSalary by bonusPct from user input can exceed Integer.MAX_VALUE"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in paystub buffer allocation",
+      "line_start": 66,
+      "line_end": 71,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "int multiplication of employeeCount by bytesPerStub can wrap to small positive value bypassing negative check"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Short integer overflow in paycheck number",
+      "line_start": 74,
+      "line_end": 75,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Addition of two short values cast back to short truncates when sum exceeds Short.MAX_VALUE"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in retirement contribution chain",
+      "line_start": 78,
+      "line_end": 82,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Chain of three dependent int multiplications where overflow cascades through contribution and match calculations"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[package]
+name = "race-condition"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "race-condition"
+path = "main.rs"
+
+[dependencies]

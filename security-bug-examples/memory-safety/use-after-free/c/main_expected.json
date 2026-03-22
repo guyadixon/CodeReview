@@ -1,0 +1,62 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "memory-safety/use-after-free",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free in complete_and_remove",
+      "line_start": 101,
+      "line_end": 115,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Task pointer dereferenced after remove_task frees the underlying memory"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free via stale notification callbacks",
+      "line_start": 62,
+      "line_end": 75,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Global notification array retains pointers to tasks freed by remove_task, dereferenced in fire_notifications"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Double free in duplicate_and_free",
+      "line_start": 143,
+      "line_end": 155,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Same pointer freed twice in succession causing heap corruption"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free in archive_tasks via stale archived pointers",
+      "line_start": 157,
+      "line_end": 178,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Pointers collected into local array before tasks are freed, then dereferenced after free in print loop"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free via stale pointer after realloc failure",
+      "line_start": 130,
+      "line_end": 138,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Old pointer retained across realloc boundary and printed after free in failure path"
+    }
+  ]
+}

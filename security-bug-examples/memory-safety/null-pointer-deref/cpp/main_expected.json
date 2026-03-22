@@ -1,0 +1,62 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "memory-safety/null-pointer-deref",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in AlertEngine::evaluate",
+      "line_start": 99,
+      "line_end": 100,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "get_latest returns nullptr for unregistered sensor ID 6, then reading->value is dereferenced"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in find_max_reading",
+      "line_start": 115,
+      "line_end": 118,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "get_latest returns nullptr for nonexistent sensor ID 99, then r->value is dereferenced in comparison"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in ingest_readings via parse_reading",
+      "line_start": 137,
+      "line_end": 140,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "parse_reading returns nullptr on malformed input, then parsed->sensor_id is dereferenced without check"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NULL pointer dereference in compare_sensors",
+      "line_start": 155,
+      "line_end": 161,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "User-supplied sensor IDs passed to get_latest which returns nullptr, both r1 and r2 dereferenced without checks"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "Division by zero in compute_average from all-NULL returns",
+      "line_start": 145,
+      "line_end": 152,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "NULL check on individual readings masks missing count validation, division by zero when all sensor IDs are invalid"
+    }
+  ]
+}

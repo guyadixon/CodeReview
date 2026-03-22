@@ -1,0 +1,95 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "injection/xss",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "Reflected XSS via tag filter parameter",
+      "line_start": 54,
+      "line_end": 54,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Tag query parameter embedded directly into HTML via template literal interpolation without escaping"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "Stored XSS via post title, author, tags, and content on index page",
+      "line_start": 67,
+      "line_end": 78,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Post title, author, tags, and content from in-memory storage rendered directly into HTML without escaping"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "Stored XSS via comment author and body on post view page",
+      "line_start": 109,
+      "line_end": 111,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Comment author and body stored from form submission rendered into HTML without escaping in a separate route handler"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "Reflected XSS via search query with partial escaping",
+      "line_start": 175,
+      "line_end": 201,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Search query reflected unescaped in input value, heading, and highlighting while content preview is escaped with escapeHtml"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "Stored XSS via profile fields with attribute injection",
+      "line_start": 220,
+      "line_end": 222,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Profile displayName, bio, and website rendered into HTML body and href attributes without escaping after cookie-based lookup"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "Reflected XSS via error message parameter",
+      "line_start": 258,
+      "line_end": 258,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Error message query parameter interpolated directly into HTML response without escaping"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "JSONP callback injection in API endpoint",
+      "line_start": 271,
+      "line_end": 273,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "JSONP callback parameter embedded into JavaScript response without validation, enabling arbitrary script execution"
+    },
+    {
+      "id": "VULN-008",
+      "cwe": "CWE-79",
+      "owasp": "A03",
+      "title": "DOM-based XSS via embed endpoint with script injection",
+      "line_start": 283,
+      "line_end": 292,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Title and theme parameters rendered into multiple HTML contexts including JavaScript string literals with inconsistent escaping"
+    }
+  ]
+}

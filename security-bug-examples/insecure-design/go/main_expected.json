@@ -1,0 +1,62 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "insecure-design",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Hardcoded database DSN and SMTP credentials",
+      "line_start": 37,
+      "line_end": 39,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Full PostgreSQL DSN with embedded password and SMTP credentials stored as package-level variables"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Database DSN and stack trace leaked in error responses",
+      "line_start": 296,
+      "line_end": 323,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Report generation handler returns raw error messages, Go debug stack trace, and database DSN in error responses"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Debug endpoint exposes full user records including passwords",
+      "line_start": 356,
+      "line_end": 379,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Debug endpoint serializes complete User struct including Password field to any authenticated user"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Password reset token and SMTP server returned in API response",
+      "line_start": 186,
+      "line_end": 191,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Password reset token and internal SMTP hostname returned directly in API response"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Config endpoint exposes all infrastructure credentials",
+      "line_start": 347,
+      "line_end": 353,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin config endpoint returns full database DSN with password and SMTP credentials"
+    }
+  ]
+}

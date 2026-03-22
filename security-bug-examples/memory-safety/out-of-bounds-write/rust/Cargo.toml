@@ -1,0 +1,10 @@
+[package]
+name = "out-of-bounds-write"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "out-of-bounds-write"
+path = "main.rs"
+
+[dependencies]

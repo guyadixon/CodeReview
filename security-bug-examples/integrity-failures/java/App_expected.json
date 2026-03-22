@@ -1,0 +1,51 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "integrity-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Unsafe Java Deserialization of Pipeline Import",
+      "line_start": 163,
+      "line_end": 164,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied base64 payload deserialized with ObjectInputStream.readObject() enabling arbitrary code execution via gadget chains"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Unsafe Java Deserialization in Object Store Retrieval",
+      "line_start": 222,
+      "line_end": 223,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Object store retrieval deserializes attacker-controlled bytes with ObjectInputStream.readObject() across two separate endpoints"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Remote JAR Loading via URLClassLoader",
+      "line_start": 255,
+      "line_end": 259,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Extension endpoint loads and instantiates classes from user-supplied remote JAR URL via URLClassLoader and reflection"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Script Engine Evaluation of User-Supplied Code",
+      "line_start": 286,
+      "line_end": 293,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Transform endpoint evaluates user-supplied JavaScript via ScriptEngine.eval() which can access Java classes for arbitrary code execution"
+    }
+  ]
+}

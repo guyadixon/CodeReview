@@ -1,0 +1,62 @@
+{
+  "source_file": "app.py",
+  "language": "python",
+  "vulnerability_class": "vulnerable-components",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated Flask with known security issues",
+      "line_start": 5,
+      "line_end": 5,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Flask 2.0.1 pinned in requirements.txt has known security vulnerabilities patched in later versions"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "PyYAML with FullLoader deserialization risk",
+      "line_start": 3,
+      "line_end": 3,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "PyYAML 5.3.1 with FullLoader usage allows some Python object construction and has known CVEs"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated requests library with known vulnerabilities",
+      "line_start": 4,
+      "line_end": 4,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "requests 2.25.1 has CVE-2023-32681 allowing Proxy-Authorization header leakage on redirects"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated lxml with XXE and memory corruption risks",
+      "line_start": 6,
+      "line_end": 6,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "lxml 4.6.3 bundles vulnerable libxml2 with known memory corruption and XXE issues"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated cryptography library",
+      "line_start": 7,
+      "line_end": 7,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "cryptography 3.3.2 has multiple known vulnerabilities in OpenSSL bindings"
+    }
+  ]
+}

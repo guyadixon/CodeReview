@@ -1,0 +1,62 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "insecure-design",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Hardcoded database and SMTP credentials",
+      "line_start": 29,
+      "line_end": 33,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Database host, username, password, SMTP host, and SMTP password stored as static const string variables"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Database credentials leaked in error response",
+      "line_start": 274,
+      "line_end": 280,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Report generation handler constructs error response containing database host, username, and password"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Debug endpoint exposes full user records including passwords",
+      "line_start": 307,
+      "line_end": 330,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Debug endpoint constructs JSON response containing all user fields including plaintext password"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Password reset token and SMTP server returned in API response",
+      "line_start": 171,
+      "line_end": 176,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Password reset token and internal SMTP hostname returned directly in API response"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Config endpoint exposes all infrastructure credentials",
+      "line_start": 299,
+      "line_end": 304,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin config endpoint returns database credentials and SMTP password in API response"
+    }
+  ]
+}

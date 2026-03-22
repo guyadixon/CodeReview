@@ -1,0 +1,40 @@
+{
+  "source_file": "app.py",
+  "language": "python",
+  "vulnerability_class": "injection/sql-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via direct string concatenation in product search",
+      "line_start": 62,
+      "line_end": 63,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied query parameter concatenated directly into SQL LIKE clause without parameterization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via format string in order filter builder",
+      "line_start": 70,
+      "line_end": 73,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Helper function uses str.format() to embed user-supplied filter values into SQL WHERE clause fragments"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via unvalidated ORDER BY sort direction",
+      "line_start": 112,
+      "line_end": 119,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Sort column is validated against allowlist but sort direction parameter is interpolated into ORDER BY clause without validation"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "vulnerable-components",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated libmicrohttpd with known vulnerabilities",
+      "line_start": 4,
+      "line_end": 4,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "libmicrohttpd linked without version constraints; older versions have DoS and memory handling CVEs"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated libcurl dependency with multiple CVEs",
+      "line_start": 5,
+      "line_end": 5,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "libcurl linked without version constraints; has numerous CVEs including heap buffer overflow and credential leakage"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated Jansson library without version pinning",
+      "line_start": 6,
+      "line_end": 6,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Jansson JSON library linked without version constraints; older versions have parsing and memory handling issues"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "No compiler security hardening flags",
+      "line_start": 1,
+      "line_end": 3,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Makefile omits -fstack-protector-strong, -D_FORTIFY_SOURCE=2, -fPIE, and other security hardening flags"
+    }
+  ]
+}

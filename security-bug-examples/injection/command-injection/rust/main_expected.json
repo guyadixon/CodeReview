@@ -1,0 +1,73 @@
+{
+  "source_file": "main.rs",
+  "language": "rust",
+  "vulnerability_class": "injection/command-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via Command::new in ping endpoint",
+      "line_start": 82,
+      "line_end": 83,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied host parameter interpolated into format! string passed to Command::new(sh).arg(-c) without sanitization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via shell execution in DNS lookup helper",
+      "line_start": 94,
+      "line_end": 95,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Domain parameter passed through helper function into Command::new(sh).arg(-c) via format! string"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Multi-parameter command injection in log search shell pipeline",
+      "line_start": 133,
+      "line_end": 133,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Three user-controlled parameters interpolated into tail|grep shell pipeline via format! with insufficient quoting"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via shell execution in archive endpoint",
+      "line_start": 189,
+      "line_end": 189,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Path from JSON body embedded into tar command via format! and Command::new(sh).arg(-c)"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via shell execution in port check",
+      "line_start": 200,
+      "line_end": 200,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Host parameter from JSON body embedded into nc command via format! and Command::new(sh).arg(-c)"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via complex shell pipeline in certificate check",
+      "line_start": 228,
+      "line_end": 230,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Hostname parameter interpolated three times into complex openssl shell pipeline with redirections"
+    }
+  ]
+}

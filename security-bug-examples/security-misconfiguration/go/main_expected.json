@@ -1,0 +1,73 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "security-misconfiguration",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Overly permissive CORS with origin reflection and credentials",
+      "line_start": 97,
+      "line_end": 108,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "CORS middleware reflects arbitrary Origin header into Access-Control-Allow-Origin while enabling credentials"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Gin debug mode with server version disclosure",
+      "line_start": 86,
+      "line_end": 87,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Gin set to DebugMode and server header middleware reveals Go runtime and Gin framework versions"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-611",
+      "owasp": "A05",
+      "title": "Relaxed XML parser configuration disables strict mode",
+      "line_start": 180,
+      "line_end": 181,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "XML decoder created with Strict=false, disabling strict XML parsing and reducing defense-in-depth"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Verbose error responses expose stack traces to clients",
+      "line_start": 172,
+      "line_end": 178,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "XML import error handler returns debug.Stack() output in JSON error response"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Unrestricted settings modification without authentication",
+      "line_start": 207,
+      "line_end": 218,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "PUT /api/settings allows any unauthenticated user to modify security-critical application settings"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Diagnostics endpoint exposes credentials and environment variables",
+      "line_start": 220,
+      "line_end": 241,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin diagnostics returns database credentials, os.Environ(), and runtime information"
+    }
+  ]
+}

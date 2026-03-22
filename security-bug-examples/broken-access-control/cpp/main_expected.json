@@ -1,0 +1,62 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "broken-access-control",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-200",
+      "owasp": "A01",
+      "title": "Unauthenticated user profile access with sensitive data exposure",
+      "line_start": 93,
+      "line_end": 102,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User profile handler returns full user object including SSN and salary without requiring authentication"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-639",
+      "owasp": "A01",
+      "title": "Insecure direct object reference in asset access",
+      "line_start": 104,
+      "line_end": 119,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Authenticated users can access any asset by ID including serial numbers and values without ownership authorization"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-284",
+      "owasp": "A01",
+      "title": "Client-controlled role header for admin authorization",
+      "line_start": 157,
+      "line_end": 162,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Admin endpoint uses client-supplied X-User-Role header instead of server-side session role for authorization"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-284",
+      "owasp": "A01",
+      "title": "Missing authorization check on role update endpoint",
+      "line_start": 173,
+      "line_end": 195,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Any authenticated user can change any user's role including self-promotion to admin without authorization check"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-200",
+      "owasp": "A01",
+      "title": "Unauthenticated debug endpoint exposing secrets and AWS credentials",
+      "line_start": 197,
+      "line_end": 213,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Debug config handler accessible without authentication returns database credentials, app secret, and AWS access keys"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "integrity-failures-js",
+  "version": "1.0.0",
+  "description": "Integrity failures example - JavaScript",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "node-serialize": "0.0.4"
+  }
+}

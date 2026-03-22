@@ -1,0 +1,73 @@
+{
+  "source_file": "app.py",
+  "language": "python",
+  "vulnerability_class": "security-misconfiguration",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Overly permissive CORS configuration with origin reflection and credentials",
+      "line_start": 35,
+      "line_end": 41,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "After-request handler reflects arbitrary Origin header into Access-Control-Allow-Origin while enabling credentials"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Debug mode enabled with weak secret key",
+      "line_start": 8,
+      "line_end": 10,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Flask DEBUG mode set to True and SECRET_KEY set to trivially guessable value 'changeme'"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-611",
+      "owasp": "A05",
+      "title": "XML External Entity processing enabled in product import",
+      "line_start": 80,
+      "line_end": 82,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "lxml XMLParser created with resolve_entities=True and no_network=False enabling XXE attacks"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Verbose error handling exposes stack traces to clients",
+      "line_start": 160,
+      "line_end": 166,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Global exception handler returns full Python traceback and exception details in JSON response"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Unrestricted settings modification without authentication",
+      "line_start": 131,
+      "line_end": 137,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "PUT /api/settings endpoint allows any unauthenticated user to modify security-critical application settings"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Diagnostics endpoint exposes environment variables and database credentials",
+      "line_start": 140,
+      "line_end": 152,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin diagnostics endpoint returns full database connection string, all environment variables, and Python path"
+    }
+  ]
+}

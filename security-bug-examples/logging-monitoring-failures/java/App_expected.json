@@ -1,0 +1,73 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "logging-monitoring-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-778",
+      "owasp": "A09",
+      "title": "No logging of failed authentication attempts",
+      "line_start": 86,
+      "line_end": 99,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Login endpoint returns error responses for invalid credentials without any logging calls"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-778",
+      "owasp": "A09",
+      "title": "No logging of successful authentication events",
+      "line_start": 89,
+      "line_end": 96,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Successful login returns token and sensitive data without logging the authentication event"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-778",
+      "owasp": "A09",
+      "title": "No audit logging for privilege escalation operations",
+      "line_start": 118,
+      "line_end": 138,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Role change endpoint modifies user privileges without any audit log entry"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-778",
+      "owasp": "A09",
+      "title": "No logging of bulk financial transactions",
+      "line_start": 170,
+      "line_end": 199,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Single and bulk transaction endpoints process financial operations without audit logging"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-778",
+      "owasp": "A09",
+      "title": "No logging of sensitive data export",
+      "line_start": 201,
+      "line_end": 228,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Data export endpoint allows bulk extraction of user records including passwords without logging"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-778",
+      "owasp": "A09",
+      "title": "No logging of security configuration changes",
+      "line_start": 230,
+      "line_end": 270,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "API key regeneration and MFA toggle endpoints modify security settings without audit logging"
+    }
+  ]
+}

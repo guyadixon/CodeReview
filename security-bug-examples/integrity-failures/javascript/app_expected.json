@@ -1,0 +1,62 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "integrity-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Unsafe Deserialization of Job Import via node-serialize",
+      "line_start": 113,
+      "line_end": 113,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied payload passed directly to node-serialize deserialize() enabling arbitrary code execution via IIFE pattern"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Unsafe Deserialization in Data Store Retrieval",
+      "line_start": 213,
+      "line_end": 213,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Data store retrieval passes stored serialized data to node-serialize deserialize() which can execute embedded functions"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Arbitrary Module Loading via require()",
+      "line_start": 178,
+      "line_end": 178,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Plugin install endpoint calls require() with user-supplied path enabling arbitrary module loading and code execution"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "VM Context Escape via Template Rendering",
+      "line_start": 155,
+      "line_end": 157,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Template rendering uses vm.runInContext() which is not a true sandbox and allows prototype chain traversal to escape the context"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Remote Code Execution via Hook Registration",
+      "line_start": 237,
+      "line_end": 240,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Hook registration fetches JavaScript from user-supplied URL and executes it in a VM context with require access"
+    }
+  ]
+}

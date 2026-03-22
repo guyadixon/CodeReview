@@ -1,0 +1,62 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "memory-safety/null-pointer-deref",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NullPointerException in processOrder for unknown SKU",
+      "line_start": 100,
+      "line_end": 101,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "findBySku returns null for unknown SKU, then product.getStockCount() dereferences null reference"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NullPointerException in calculatePrice from null Double unboxing",
+      "line_start": 82,
+      "line_end": 83,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "discountRules.get returns null Double for unknown category, auto-unboxing in arithmetic triggers NPE"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NullPointerException in applyPriceUpdate for unknown SKU",
+      "line_start": 170,
+      "line_end": 173,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "User-supplied SKU from parsed properties passed to findBySku which returns null, then product.setPrice dereferences null"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NullPointerException in generateStockReport from null Integer unboxing",
+      "line_start": 140,
+      "line_end": 141,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Product SKU-004 has null stockCount, String.format with %d triggers auto-unboxing of null Integer"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "NullPointerException in findMostExpensive via Optional.of(null) anti-pattern",
+      "line_start": 63,
+      "line_end": 69,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Optional.of wraps orElse(null) result, isEmpty guard masks latent NPE from Optional.of(null) under concurrency or refactoring"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "memory-safety/out-of-bounds-write",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in name import via strcpy",
+      "line_start": 33,
+      "line_end": 34,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "strcpy copies user input into fixed-size staging buffer without bounds checking"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in CSV value processing",
+      "line_start": 137,
+      "line_end": 143,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Fixed-size values[64] array written with loop bound of 256 allowing overflow"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in apply_transform workspace",
+      "line_start": 118,
+      "line_end": 122,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Fixed-size workspace[128] overflowed when count parameter exceeds 128 from caller"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Heap buffer overflow via integer wraparound in merge_fields",
+      "line_start": 53,
+      "line_end": 57,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "uint32_t accumulator wraps around causing undersized malloc followed by overflowing memcpy"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Heap buffer overflow via untrusted entry count in batch_import",
+      "line_start": 85,
+      "line_end": 90,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Untrusted entry_count from input data controls allocation and loop bounds without adequate validation"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in copy_record_names without bounds check",
+      "line_start": 148,
+      "line_end": 155,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "dest_size parameter accepted but never used to limit writes to destination buffer"
+    }
+  ]
+}

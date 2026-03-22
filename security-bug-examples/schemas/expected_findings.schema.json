@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["source_file", "language", "vulnerability_class", "findings"],
+  "properties": {
+    "source_file": { "type": "string" },
+    "language": {
+      "type": "string",
+      "enum": ["python", "java", "go", "rust", "c", "cpp", "javascript"]
+    },
+    "vulnerability_class": { "type": "string" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "cwe", "title", "line_start", "line_end", "complexity_level", "detection_difficulty"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^VULN-\\d{3}$" },
+          "cwe": { "type": "string", "pattern": "^CWE-\\d+$" },
+          "owasp": { "type": ["string", "null"], "pattern": "^A\\d{2}$" },
+          "title": { "type": "string" },
+          "line_start": { "type": "integer", "minimum": 1 },
+          "line_end": { "type": "integer", "minimum": 1 },
+          "complexity_level": { "type": "string", "enum": ["Obvious", "Moderate", "Nuanced"] },
+          "detection_difficulty": { "type": "string", "enum": ["Easily_Detectable", "Pattern_Dependent", "Likely_Missed"] },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

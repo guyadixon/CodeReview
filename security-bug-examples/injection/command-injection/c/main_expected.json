@@ -1,0 +1,84 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "injection/command-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via system() in ping",
+      "line_start": 26,
+      "line_end": 28,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied host argument from argv embedded into snprintf and passed to system() without sanitization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via system() in DNS lookup",
+      "line_start": 46,
+      "line_end": 48,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Domain argument embedded into dig command via snprintf and system() while only record type is validated"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Multi-parameter command injection in log search",
+      "line_start": 63,
+      "line_end": 64,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Three user-controlled parameters interpolated into tail|grep shell pipeline via snprintf with insufficient quoting"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via system() in disk info",
+      "line_start": 69,
+      "line_end": 71,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied path argument from argv embedded into df command via snprintf and system()"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via system() in archive",
+      "line_start": 90,
+      "line_end": 92,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Filepath argument embedded into tar command via snprintf and system() while only archive name is sanitized"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via system() in port check",
+      "line_start": 101,
+      "line_end": 103,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Host argument from argv embedded into nc command via snprintf and system() while only port is validated"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Arbitrary command execution in interactive mode",
+      "line_start": 143,
+      "line_end": 144,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "User input from stdin passed directly to system() via snprintf with no command filtering or access control"
+    }
+  ]
+}

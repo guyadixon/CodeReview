@@ -1,0 +1,84 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "race-condition",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic balance update in deposit",
+      "line_start": 12,
+      "line_end": 17,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Read-await-write on this.balance allows concurrent async deposits to overwrite each other"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in withdraw balance check",
+      "line_start": 19,
+      "line_end": 26,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Balance check and subtraction separated by await are not atomic, allowing concurrent overdrawing"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic cross-account transfer",
+      "line_start": 28,
+      "line_end": 37,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Transfer modifies two account balances across an await boundary without serialization"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in ticket reservation",
+      "line_start": 48,
+      "line_end": 56,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Availability check and decrement separated by await allow overselling of tickets"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in inventory order processing",
+      "line_start": 82,
+      "line_end": 90,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Stock check and decrement through object property are not atomic across await boundary"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-thread-safe async singleton",
+      "line_start": 103,
+      "line_end": 109,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "getConfig uses check-then-create across an await, allowing multiple singleton instances"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "File-based TOCTOU counter",
+      "line_start": 111,
+      "line_end": 118,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "File read-increment-write without file locking allows concurrent tasks to lose counter increments"
+    }
+  ]
+}

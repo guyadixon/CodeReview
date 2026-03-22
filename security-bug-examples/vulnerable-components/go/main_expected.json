@@ -1,0 +1,51 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "vulnerable-components",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated Gin framework with known vulnerabilities",
+      "line_start": 13,
+      "line_end": 13,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Gin v1.7.4 has known security vulnerabilities including path traversal and request handling issues"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated gopkg.in/yaml.v2 with deserialization issues",
+      "line_start": 14,
+      "line_end": 14,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "yaml.v2 v2.4.0 is a legacy package with known parsing issues superseded by yaml.v3"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated golang.org/x/crypto with security fixes missing",
+      "line_start": 1,
+      "line_end": 1,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Transitive dependency golang.org/x/crypto pinned to 2020-era version missing years of security patches"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated go-playground/validator with input validation bypass",
+      "line_start": 1,
+      "line_end": 1,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "validator/v10 v10.4.1 has known validation logic issues affecting Gin request binding"
+    }
+  ]
+}

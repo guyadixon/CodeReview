@@ -1,0 +1,84 @@
+{
+  "source_file": "main.rs",
+  "language": "rust",
+  "vulnerability_class": "integer-overflow",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Wrapping addition in average computation",
+      "line_start": 35,
+      "line_end": 38,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "wrapping_add accumulates i32 values that can wrap past i32::MAX producing incorrect average"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Wrapping addition in calibration offset",
+      "line_start": 43,
+      "line_end": 44,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "wrapping_add of raw value and calibration offset can wrap when both are large"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Wrapping multiplication in power consumption",
+      "line_start": 48,
+      "line_end": 49,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "wrapping_mul of voltage and current from user input can wrap i32 silently"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Wrapping multiplication in sample buffer allocation",
+      "line_start": 52,
+      "line_end": 54,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "wrapping_mul of u32 sample_count and sample_size wraps to small value used as Vec allocation size"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Wrapping arithmetic in rate of change computation",
+      "line_start": 58,
+      "line_end": 67,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Chained wrapping_sub and wrapping_mul produce compounded incorrect results for large measurement deltas"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Wrapping multiplication in reading scale",
+      "line_start": 72,
+      "line_end": 73,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "wrapping_mul of measurement value by user-provided factor wraps silently"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Wrapping multiplication in temperature conversion",
+      "line_start": 100,
+      "line_end": 102,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "wrapping_mul of celsius_hundredths by 9 overflows for extreme temperature values in standard conversion formula"
+    }
+  ]
+}

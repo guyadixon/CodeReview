@@ -1,0 +1,51 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "vulnerable-components",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Header-only cpp-httplib without version pinning",
+      "line_start": 9,
+      "line_end": 9,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Likely_Missed",
+      "description": "cpp-httplib included as header-only library without version tracking; stale versions have request parsing and DoS vulnerabilities"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Header-only nlohmann/json without version pinning",
+      "line_start": 10,
+      "line_end": 10,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "nlohmann/json included as header-only library without version tracking; older versions have stack overflow and precision issues"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Missing security hardening compiler flags",
+      "line_start": 1,
+      "line_end": 3,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Makefile omits -fstack-protector-strong, -D_FORTIFY_SOURCE=2, -fPIE, and RELRO linker flags"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated pthread usage without thread sanitizer support",
+      "line_start": 7,
+      "line_end": 7,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Build configuration lacks sanitizer support for detecting concurrency issues in mutex-protected data structures"
+    }
+  ]
+}

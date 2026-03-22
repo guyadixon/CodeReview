@@ -1,0 +1,73 @@
+{
+  "source_file": "app.py",
+  "language": "python",
+  "vulnerability_class": "integrity-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Unsafe Pickle Deserialization of Workflow Import",
+      "line_start": 126,
+      "line_end": 127,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied base64-encoded payload deserialized with pickle.loads() enabling arbitrary code execution"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Unsafe YAML Deserialization with yaml.Loader",
+      "line_start": 128,
+      "line_end": 129,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "YAML workflow import uses yaml.load() with unsafe yaml.Loader enabling arbitrary Python object instantiation"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Pickle Deserialization in Cache Retrieval",
+      "line_start": 222,
+      "line_end": 223,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Cache retrieval endpoint deserializes stored data with pickle.loads() which can execute arbitrary code if cache contents are tampered with"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-502",
+      "owasp": "A08",
+      "title": "Unsafe YAML Configuration Loading",
+      "line_start": 237,
+      "line_end": 238,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Configuration endpoint parses user-supplied YAML with yaml.load() using unsafe yaml.Loader"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Remote Code Loading via Extension URL",
+      "line_start": 261,
+      "line_end": 265,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Extension endpoint fetches code from user-supplied URL and executes it with exec(compile()) enabling remote code execution"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-829",
+      "owasp": "A08",
+      "title": "Untrusted Plugin Download and Import",
+      "line_start": 183,
+      "line_end": 186,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Plugin install endpoint downloads Python code from untrusted URL and imports it via importlib without integrity verification"
+    }
+  ]
+}

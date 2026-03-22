@@ -1,0 +1,84 @@
+{
+  "source_file": "app.py",
+  "language": "python",
+  "vulnerability_class": "race-condition",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic balance update in deposit",
+      "line_start": 17,
+      "line_end": 22,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-modify-write on self.balance without synchronization allows concurrent deposits to overwrite each other"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in withdraw balance check",
+      "line_start": 24,
+      "line_end": 29,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Balance check and subtraction are not atomic, allowing concurrent withdrawals to overdraw the account"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic cross-account transfer",
+      "line_start": 31,
+      "line_end": 39,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Transfer checks source balance then modifies two accounts without synchronization, breaking conservation invariant"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in ticket reservation",
+      "line_start": 49,
+      "line_end": 55,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Availability check and decrement are not atomic, allowing overselling of tickets"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in inventory order processing",
+      "line_start": 72,
+      "line_end": 77,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Stock check and decrement are not atomic, allowing inventory to go negative under concurrent orders"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-thread-safe singleton initialization",
+      "line_start": 88,
+      "line_end": 97,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "ConfigCache singleton uses unsynchronized __new__ and __init__, allowing multiple instances or partial initialization"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "File-based TOCTOU counter",
+      "line_start": 100,
+      "line_end": 107,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "File read-increment-write without file locking allows concurrent threads to lose counter increments"
+    }
+  ]
+}

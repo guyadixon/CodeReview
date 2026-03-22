@@ -1,0 +1,51 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "injection/sql-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via template literal in product search",
+      "line_start": 37,
+      "line_end": 37,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied query parameter interpolated via template literal into SQL LIKE clause without parameterization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via status filter concatenation in helper function",
+      "line_start": 50,
+      "line_end": 52,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Helper function embeds user-supplied status filter value into SQL WHERE clause fragment via template literal"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via unvalidated ORDER BY sort direction",
+      "line_start": 99,
+      "line_end": 102,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Sort column is validated against allowlist but sort direction parameter is interpolated into ORDER BY clause without validation"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via dynamic column names and category concatenation in reports endpoint",
+      "line_start": 155,
+      "line_end": 165,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "User-supplied field names interpolated into SELECT clause and category concatenated into WHERE clause without validation or parameterization"
+    }
+  ]
+}

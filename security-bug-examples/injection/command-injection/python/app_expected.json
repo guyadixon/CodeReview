@@ -1,0 +1,62 @@
+{
+  "source_file": "app.py",
+  "language": "python",
+  "vulnerability_class": "injection/command-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via os.popen in ping endpoint",
+      "line_start": 16,
+      "line_end": 16,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied host parameter concatenated directly into os.popen() shell command without sanitization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via subprocess shell execution in DNS lookup helper",
+      "line_start": 36,
+      "line_end": 38,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Domain parameter passed through helper function into subprocess.Popen with shell=True via string formatting"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via os.system in archive helper",
+      "line_start": 52,
+      "line_end": 53,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Filepath from JSON body embedded into tar command via os.system() in helper function while only archive name is sanitized"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Multi-parameter command injection in log search shell pipeline",
+      "line_start": 68,
+      "line_end": 69,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Three user-controlled parameters interpolated into tail|grep shell pipeline with insufficient single-quote wrapping"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via shell execution in port check",
+      "line_start": 100,
+      "line_end": 101,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Host parameter from JSON body embedded into nc command via subprocess.Popen with shell=True"
+    }
+  ]
+}

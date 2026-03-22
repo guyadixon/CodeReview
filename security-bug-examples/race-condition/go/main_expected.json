@@ -1,0 +1,84 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "race-condition",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic balance update in deposit",
+      "line_start": 18,
+      "line_end": 22,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-modify-write on Balance field without synchronization allows concurrent deposits to overwrite each other"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in withdraw balance check",
+      "line_start": 24,
+      "line_end": 30,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Balance check and subtraction are not atomic, allowing concurrent withdrawals to overdraw the account"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic cross-account transfer",
+      "line_start": 33,
+      "line_end": 42,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Transfer modifies two account balances without synchronization, breaking conservation invariant"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in ticket reservation",
+      "line_start": 60,
+      "line_end": 68,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Availability check and decrement are not atomic, allowing overselling of tickets"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in inventory order processing",
+      "line_start": 91,
+      "line_end": 99,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Stock check and decrement through map are not atomic, allowing inventory to go negative"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-thread-safe singleton config initialization",
+      "line_start": 112,
+      "line_end": 119,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "GetConfig uses check-then-create without synchronization, allowing multiple singleton instances"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic shared counter increment",
+      "line_start": 196,
+      "line_end": 203,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-sleep-write on shared counter variable causes lost updates under concurrent goroutine access"
+    }
+  ]
+}

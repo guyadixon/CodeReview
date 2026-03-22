@@ -1,0 +1,62 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "vulnerable-components",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Log4j 2.14.1 with remote code execution (Log4Shell)",
+      "line_start": 13,
+      "line_end": 14,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "log4j-core and log4j-api 2.14.1 are vulnerable to CVE-2021-44228 allowing RCE via JNDI lookup in logged strings"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated Spring Boot 2.5.6 with multiple CVEs",
+      "line_start": 1,
+      "line_end": 22,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Spring Boot 2.5.6 parent POM has known vulnerabilities including Spring4Shell CVE-2022-22965"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Jackson databind 2.12.3 with deserialization vulnerabilities",
+      "line_start": 8,
+      "line_end": 9,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Jackson-databind 2.12.3 has known polymorphic deserialization vulnerabilities exploitable via crafted payloads"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Apache Commons Text 1.9 with string interpolation RCE",
+      "line_start": 10,
+      "line_end": 10,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "commons-text 1.9 StringSubstitutor vulnerable to CVE-2022-42889 allowing RCE via script lookup prefixes"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Apache Commons IO 2.6 with path traversal issues",
+      "line_start": 11,
+      "line_end": 11,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "commons-io 2.6 has CVE-2021-29425 path traversal vulnerability exploitable via user-controlled file paths"
+    }
+  ]
+}

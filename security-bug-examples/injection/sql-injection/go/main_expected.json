@@ -1,0 +1,51 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "injection/sql-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via direct string concatenation in product search",
+      "line_start": 53,
+      "line_end": 54,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied query parameter concatenated directly into SQL LIKE clause without parameterization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via category concatenation and unvalidated ORDER BY direction in query builder",
+      "line_start": 83,
+      "line_end": 86,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Helper function concatenates category into WHERE clause and passes unvalidated sort direction into ORDER BY via fmt.Sprintf"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via status filter concatenation in order listing",
+      "line_start": 131,
+      "line_end": 133,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Status query parameter concatenated directly into SQL string despite base query using parameterization for customer_id"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-89",
+      "owasp": "A03",
+      "title": "SQL Injection via loop-based tag concatenation in order listing",
+      "line_start": 135,
+      "line_end": 140,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Comma-separated tags parameter split and iterated in a loop, each tag interpolated into SQL LIKE clause via fmt.Sprintf without parameterization"
+    }
+  ]
+}

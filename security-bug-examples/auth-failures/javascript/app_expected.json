@@ -1,0 +1,62 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "auth-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-798",
+      "owasp": "A07",
+      "title": "Hardcoded master key and support backdoor code",
+      "line_start": 6,
+      "line_end": 7,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Hardcoded MASTER_KEY and SUPPORT_BACKDOOR constants used for privileged authentication bypass"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-287",
+      "owasp": "A07",
+      "title": "MD5 used for password hashing",
+      "line_start": 9,
+      "line_end": 11,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Passwords hashed with crypto.createHash('md5') which is cryptographically broken for password storage"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-307",
+      "owasp": "A07",
+      "title": "No rate limiting on login endpoint",
+      "line_start": 38,
+      "line_end": 61,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Login endpoint accepts unlimited authentication attempts without rate limiting or account lockout"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-798",
+      "owasp": "A07",
+      "title": "API key bypass in token validation endpoint",
+      "line_start": 65,
+      "line_end": 67,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Token validation endpoint accepts hardcoded MASTER_KEY via apiKey field as valid authentication"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-798",
+      "owasp": "A07",
+      "title": "Support backdoor allows impersonation of any user",
+      "line_start": 144,
+      "line_end": 156,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Hidden support login endpoint with hardcoded escalation code allows creating sessions as any user"
+    }
+  ]
+}

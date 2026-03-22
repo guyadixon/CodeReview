@@ -1,0 +1,84 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "race-condition",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic balance update in deposit",
+      "line_start": 23,
+      "line_end": 27,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-modify-write on balance field without synchronization allows concurrent deposits to overwrite each other"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in withdraw balance check",
+      "line_start": 29,
+      "line_end": 35,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Balance check and subtraction are not atomic, allowing concurrent withdrawals to overdraw the account"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic cross-account transfer",
+      "line_start": 37,
+      "line_end": 45,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Transfer modifies two account balances without synchronization, breaking conservation invariant"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in ticket reservation",
+      "line_start": 60,
+      "line_end": 68,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Availability check and decrement are not atomic, allowing overselling of tickets"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-thread-safe lazy singleton",
+      "line_start": 93,
+      "line_end": 100,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "getInstance() uses check-then-create without synchronization, allowing multiple singleton instances"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic shared counter increment",
+      "line_start": 107,
+      "line_end": 111,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-yield-write on shared counter field causes lost updates under concurrent access"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in order processing inventory check",
+      "line_start": 119,
+      "line_end": 126,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Stock check and decrement through HashMap are not atomic, allowing inventory to go negative"
+    }
+  ]
+}

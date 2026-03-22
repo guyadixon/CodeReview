@@ -1,0 +1,84 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "integer-overflow",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in room charge calculation",
+      "line_start": 38,
+      "line_end": 39,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int32 RoomRate by int32 Nights can exceed int32 max and wrap silently"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in tax computation",
+      "line_start": 42,
+      "line_end": 44,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Intermediate multiplication of large room charge by tax basis points overflows int32"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in total computation with addition",
+      "line_start": 47,
+      "line_end": 50,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Addition of large charge and tax values overflows int32 when both are near maximum"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in seasonal rate calculation",
+      "line_start": 53,
+      "line_end": 54,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int32 baseRate by int32 SeasonFactor overflows for large rates"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in room block allocation",
+      "line_start": 66,
+      "line_end": 72,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "int32 multiplication of rooms by dataPerRoom can wrap to small positive value bypassing negative check"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in loyalty points calculation",
+      "line_start": 74,
+      "line_end": 75,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int32 spendCents by int32 multiplier overflows for high-spending customers"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Truncation in currency conversion result",
+      "line_start": 103,
+      "line_end": 105,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "64-bit intermediate result truncated to int32 on return, losing data for large conversions"
+    }
+  ]
+}

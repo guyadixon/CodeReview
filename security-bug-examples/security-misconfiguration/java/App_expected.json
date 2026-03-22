@@ -1,0 +1,62 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "security-misconfiguration",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Overly permissive CORS configuration with wildcard origins and credentials",
+      "line_start": 72,
+      "line_end": 79,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Spring CORS configured with allowedOriginPatterns(*), allowedMethods(*), allowedHeaders(*), and allowCredentials(true)"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-611",
+      "owasp": "A05",
+      "title": "XML External Entity processing enabled in product import",
+      "line_start": 113,
+      "line_end": 115,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "DocumentBuilderFactory created with setExpandEntityReferences(true) and no XXE protection features"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Verbose error handling exposes stack traces to clients",
+      "line_start": 195,
+      "line_end": 202,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Global exception handler returns exception class name, message, and full stack trace in JSON response"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Unrestricted settings modification without authentication",
+      "line_start": 186,
+      "line_end": 190,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "PUT /api/settings allows any unauthenticated user to modify security-critical application settings via putAll"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Diagnostics endpoint exposes database credentials and system properties",
+      "line_start": 192,
+      "line_end": 206,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin diagnostics returns JDBC URL with password, system properties, and classpath"
+    }
+  ]
+}

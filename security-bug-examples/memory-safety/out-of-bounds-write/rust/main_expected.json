@@ -1,0 +1,51 @@
+{
+  "source_file": "main.rs",
+  "language": "rust",
+  "vulnerability_class": "memory-safety/out-of-bounds-write",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Off-by-one out-of-bounds write in scale_buffer",
+      "line_start": 93,
+      "line_end": 99,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Inclusive range 0..=len causes ptr::write one element past the slice boundary"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Unbounded name copy in add_item via unsafe ptr::copy_nonoverlapping",
+      "line_start": 33,
+      "line_end": 39,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "User-supplied name length not validated against 32-byte destination before copy"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Heap buffer overflow via u16 truncation in merge_strings",
+      "line_start": 102,
+      "line_end": 103,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "u16 accumulator wraps around for large inputs causing undersized allocation"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Integer overflow in process_raw_packet allocation size",
+      "line_start": 140,
+      "line_end": 152,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Attacker-controlled count and elem_size used with unchecked Layout creation"
+    }
+  ]
+}

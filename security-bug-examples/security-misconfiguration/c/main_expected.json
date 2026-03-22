@@ -1,0 +1,62 @@
+{
+  "source_file": "main.c",
+  "language": "c",
+  "vulnerability_class": "security-misconfiguration",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Overly permissive CORS with wildcard origin and credentials",
+      "line_start": 84,
+      "line_end": 90,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "CORS headers set Access-Control-Allow-Origin to *, Allow-Credentials to true, and Allow-Headers to * on every response"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Server version and technology disclosure via response headers",
+      "line_start": 85,
+      "line_end": 86,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Every response includes Server and X-Powered-By headers revealing exact libmicrohttpd version and OS"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-611",
+      "owasp": "A05",
+      "title": "XML External Entity processing enabled in product import",
+      "line_start": 131,
+      "line_end": 132,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "xmlReadMemory called with XML_PARSE_DTDLOAD and XML_PARSE_NOENT flags enabling XXE attacks"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Debug mode enabled with TLS verification disabled",
+      "line_start": 33,
+      "line_end": 36,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Global defaults set debug_mode=1, tls_verify=0, and log_level=DEBUG as compile-time configuration"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Diagnostics endpoint exposes database credentials and build information",
+      "line_start": 192,
+      "line_end": 203,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin diagnostics returns database host, username, password, and compile timestamps in JSON response"
+    }
+  ]
+}

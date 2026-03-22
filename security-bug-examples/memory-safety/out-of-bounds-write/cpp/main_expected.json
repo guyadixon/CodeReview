@@ -1,0 +1,73 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "memory-safety/out-of-bounds-write",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in set_label via strcpy",
+      "line_start": 32,
+      "line_end": 33,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "strcpy copies user-supplied label into fixed-size label[48] without bounds checking"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Heap buffer overflow in DataPipeline ingest without capacity check",
+      "line_start": 80,
+      "line_end": 83,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Ingest writes past heap-allocated buffer when ingested count exceeds pipeline capacity"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in tagged input tag extraction",
+      "line_start": 130,
+      "line_end": 137,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "memcpy copies unbounded tag_len bytes into fixed-size tag[16] based on user-controlled separator position"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in tagged input payload via strcpy",
+      "line_start": 138,
+      "line_end": 138,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "strcpy copies user-controlled payload into fixed-size payload[256] without bounds checking"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in aggregate_readings without bounds check",
+      "line_start": 148,
+      "line_end": 153,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Unbounded parsing loop writes past fixed-size readings[32] array"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-787",
+      "owasp": null,
+      "title": "Stack buffer overflow in copy_with_prefix ignoring destination size",
+      "line_start": 160,
+      "line_end": 168,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "dest_size parameter accepted but unused; memcpy writes input-derived length to caller's fixed-size buffer"
+    }
+  ]
+}

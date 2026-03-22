@@ -1,0 +1,62 @@
+{
+  "source_file": "app.py",
+  "language": "python",
+  "vulnerability_class": "insecure-design",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Hardcoded credentials in source code",
+      "line_start": 11,
+      "line_end": 13,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "SMTP credentials stored as plaintext string constants at module level alongside plaintext user passwords"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Verbose error messages expose internal database path and stack trace",
+      "line_start": 187,
+      "line_end": 192,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Report generation endpoint returns full Python traceback, exception details, and database file path in error responses"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Debug endpoint exposes user passwords and sensitive fields",
+      "line_start": 210,
+      "line_end": 219,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Debug endpoint returns complete user objects including plaintext passwords to any authenticated user"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Password reset token returned in API response with internal server details",
+      "line_start": 117,
+      "line_end": 121,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Password reset token and internal SMTP hostname returned directly in API response instead of being sent via email"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Sensitive configuration exposed via admin endpoint",
+      "line_start": 200,
+      "line_end": 208,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin config endpoint returns all application secrets including SMTP credentials in the API response"
+    }
+  ]
+}

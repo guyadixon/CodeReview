@@ -1,0 +1,62 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "auth-failures",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-798",
+      "owasp": "A07",
+      "title": "Hardcoded internal API key and debug access code",
+      "line_start": 18,
+      "line_end": 19,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Hardcoded internalAPIKey and debugAccessCode constants used for privileged authentication bypass"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-287",
+      "owasp": "A07",
+      "title": "MD5 used for password hashing",
+      "line_start": 47,
+      "line_end": 50,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Passwords hashed with crypto/md5 which is cryptographically broken for password storage"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-307",
+      "owasp": "A07",
+      "title": "No rate limiting on login endpoint",
+      "line_start": 98,
+      "line_end": 135,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Login endpoint accepts unlimited authentication attempts without rate limiting or account lockout"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-798",
+      "owasp": "A07",
+      "title": "Hardcoded debug access code bypasses token verification",
+      "line_start": 146,
+      "line_end": 148,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Token verification endpoint accepts hardcoded debugAccessCode as valid authentication"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-287",
+      "owasp": "A07",
+      "title": "Debug endpoint exposes active session tokens",
+      "line_start": 301,
+      "line_end": 321,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Debug sessions endpoint returns all active session tokens allowing session hijacking"
+    }
+  ]
+}

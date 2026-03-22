@@ -1,0 +1,62 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "memory-safety/use-after-free",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free via dangling pointer after document removal",
+      "line_start": 170,
+      "line_end": 176,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Document pointer dereferenced after store.remove deletes the object and frees its content"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free via EventBus holding stale document pointers",
+      "line_start": 178,
+      "line_end": 188,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "EventBus retains raw pointers to documents freed by store.remove, dereferenced during publish"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free via shallow content copy in fetch_and_release",
+      "line_start": 107,
+      "line_end": 117,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Snapshot shallow-copies content pointer that is freed when store.remove deletes the original document"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Double free of document content buffer",
+      "line_start": 196,
+      "line_end": 205,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Content pointer freed by store.remove then freed again explicitly causing heap corruption"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-416",
+      "owasp": null,
+      "title": "Use after free via stale buffer in build_index after realloc",
+      "line_start": 147,
+      "line_end": 165,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Old buffer pointer dereferenced after resize_buffer frees it on the realloc failure path"
+    }
+  ]
+}

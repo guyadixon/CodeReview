@@ -1,0 +1,62 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "vulnerable-components",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated Express 4.17.1 with known vulnerabilities",
+      "line_start": 1,
+      "line_end": 1,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Express 4.17.1 has known security vulnerabilities including open redirect issues patched in later versions"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Lodash 4.17.20 with prototype pollution",
+      "line_start": 2,
+      "line_end": 2,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Lodash 4.17.20 vulnerable to prototype pollution via _.merge() used in inventory import"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated axios 0.21.1 with SSRF and header leakage",
+      "line_start": 6,
+      "line_end": 6,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Axios 0.21.1 has CVE-2023-45857 XSRF token exposure and SSRF vulnerabilities"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "EJS 3.1.5 with server-side template injection",
+      "line_start": 4,
+      "line_end": 4,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "EJS 3.1.5 vulnerable to CVE-2022-29078 SSTI exploitable via user-controlled template in label generation"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Marked 2.0.0 with ReDoS and XSS vulnerabilities",
+      "line_start": 5,
+      "line_end": 5,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Marked 2.0.0 has ReDoS and XSS vulnerabilities exploitable via user-controlled markdown input"
+    }
+  ]
+}

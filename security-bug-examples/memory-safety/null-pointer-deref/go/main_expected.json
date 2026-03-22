@@ -1,0 +1,62 @@
+{
+  "source_file": "main.go",
+  "language": "go",
+  "vulnerability_class": "memory-safety/null-pointer-deref",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "Nil pointer dereference in Aggregator.Sum",
+      "line_start": 72,
+      "line_end": 75,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "store.Get returns nil for nonexistent metric name, then m.Value is accessed without nil check"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "Nil function pointer dereference in Dashboard.Render",
+      "line_start": 103,
+      "line_end": 104,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Map lookup returns nil function for nonexistent widget name, then fn() is called without nil check"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "Nil pointer dereference in ingestData via parseMetricLine",
+      "line_start": 148,
+      "line_end": 150,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "parseMetricLine returns nil on malformed input, then m.Name and other fields are accessed without nil check"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "Nil pointer dereference in compareMetrics",
+      "line_start": 153,
+      "line_end": 157,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "User-supplied metric names passed to store.Get which returns nil, both m1 and m2 dereferenced without checks"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-476",
+      "owasp": null,
+      "title": "Nil pointer dereference in Aggregator.Max",
+      "line_start": 80,
+      "line_end": 83,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Nil check on best variable masks missing nil check on m, m.Value accessed when m is nil and best is non-nil"
+    }
+  ]
+}

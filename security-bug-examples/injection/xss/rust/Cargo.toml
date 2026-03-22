@@ -1,0 +1,9 @@
+[package]
+name = "xss-rustforum"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = { version = "4.4.0", features = ["cookies"] }
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"

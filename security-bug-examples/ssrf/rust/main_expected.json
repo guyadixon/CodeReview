@@ -1,0 +1,62 @@
+{
+  "source_file": "main.rs",
+  "language": "rust",
+  "vulnerability_class": "ssrf",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Direct URL fetch from user input",
+      "line_start": 99,
+      "line_end": 124,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied URL passed directly to reqwest::get without any validation"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Incomplete blocklist bypass in URL preview",
+      "line_start": 126,
+      "line_end": 162,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Preview handler blocks only localhost and 127.0.0.1 but allows other loopback representations, private ranges, and metadata IPs"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Webhook callback without re-validation",
+      "line_start": 197,
+      "line_end": 224,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Webhook test handler fetches stored callback URL without re-validating the destination, enabling two-step SSRF"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Metadata endpoint check bypassable via DNS rebinding",
+      "line_start": 231,
+      "line_end": 268,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Import handler checks hostname string for 169.254 prefix but is bypassable via DNS rebinding or alternative hostnames"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-918",
+      "owasp": "A10",
+      "title": "Service proxy with arbitrary base_url fallback",
+      "line_start": 270,
+      "line_end": 306,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Proxy handler falls back to user-supplied base_url when service name is unrecognized, enabling arbitrary SSRF"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "source_file": "main.rs",
+  "language": "rust",
+  "vulnerability_class": "vulnerable-components",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated actix-web 3.3.3 with known security issues",
+      "line_start": 1,
+      "line_end": 1,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Actix-web 3.3.3 is unmaintained with known vulnerabilities; 4.x series includes critical security fixes"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated serde 1.0.130 missing security patches",
+      "line_start": 2,
+      "line_end": 2,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Serde 1.0.130 is significantly behind current release with deserialization edge case fixes missing"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-1104",
+      "owasp": "A06",
+      "title": "Outdated serde_json 1.0.68 with parsing edge cases",
+      "line_start": 3,
+      "line_end": 3,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "serde_json 1.0.68 has known number parsing and deeply nested structure handling issues"
+    }
+  ]
+}

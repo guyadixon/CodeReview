@@ -1,0 +1,12 @@
+{
+  "name": "cryptographic-failures-js",
+  "version": "1.0.0",
+  "description": "Cryptographic failures example - JavaScript",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}

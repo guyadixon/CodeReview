@@ -1,0 +1,106 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "injection/command-injection",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via popen in ping",
+      "line_start": 47,
+      "line_end": 49,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied host argument from argv concatenated into string passed to popen() via exec_command() without sanitization"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via popen in DNS lookup",
+      "line_start": 58,
+      "line_end": 60,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Domain argument concatenated into dig command and passed to popen() while only record type is validated"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Multi-parameter command injection in log search",
+      "line_start": 72,
+      "line_end": 72,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Three user-controlled parameters concatenated into tail|grep shell pipeline passed to popen() with insufficient quoting"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via popen in disk info",
+      "line_start": 84,
+      "line_end": 86,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-supplied path argument from argv concatenated into df command and passed to popen()"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via popen in archive",
+      "line_start": 97,
+      "line_end": 99,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Filepath argument concatenated into tar command and passed to popen() while only archive name is sanitized"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via popen in port check",
+      "line_start": 109,
+      "line_end": 111,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Host argument from argv concatenated into nc command and passed to popen() while only port is validated"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via popen in WHOIS lookup",
+      "line_start": 131,
+      "line_end": 131,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Domain argument from argv directly concatenated into whois command and passed to popen()"
+    },
+    {
+      "id": "VULN-008",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Command injection via popen in traceroute",
+      "line_start": 148,
+      "line_end": 149,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Host argument from argv directly concatenated into traceroute command and passed to popen()"
+    },
+    {
+      "id": "VULN-009",
+      "cwe": "CWE-78",
+      "owasp": "A03",
+      "title": "Arbitrary command execution in interactive mode",
+      "line_start": 168,
+      "line_end": 168,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "User input from stdin passed directly to popen() via exec_command() with no command filtering or access control"
+    }
+  ]
+}

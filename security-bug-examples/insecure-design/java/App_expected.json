@@ -1,0 +1,62 @@
+{
+  "source_file": "App.java",
+  "language": "java",
+  "vulnerability_class": "insecure-design",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Hardcoded database and SMTP credentials",
+      "line_start": 22,
+      "line_end": 26,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Database URL, username, password, SMTP host, and SMTP credential stored as static final string constants"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Full stack trace and database URL leaked in error response",
+      "line_start": 273,
+      "line_end": 282,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Report generation endpoint returns full Java stack trace, exception message, and database URL in error responses"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Debug endpoint exposes complete user records including passwords",
+      "line_start": 306,
+      "line_end": 319,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Debug endpoint returns complete user map including plaintext passwords to any authenticated user"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-209",
+      "owasp": "A04",
+      "title": "Password reset token and SMTP server leaked in response",
+      "line_start": 162,
+      "line_end": 166,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "Password reset token and internal SMTP server hostname returned directly in API response"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-522",
+      "owasp": "A04",
+      "title": "Admin config endpoint exposes all infrastructure credentials",
+      "line_start": 297,
+      "line_end": 303,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Config endpoint returns database URL, SMTP host, and SMTP credential in API response"
+    }
+  ]
+}

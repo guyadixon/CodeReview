@@ -1,0 +1,84 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "race-condition",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic balance update in deposit",
+      "line_start": 20,
+      "line_end": 24,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-yield-write on balance member without lock protection allows concurrent deposits to overwrite each other"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in withdraw balance check",
+      "line_start": 26,
+      "line_end": 32,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Balance check and subtraction are not atomic, allowing concurrent withdrawals to overdraw the account"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic cross-account transfer",
+      "line_start": 34,
+      "line_end": 43,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Transfer modifies two account balances without synchronization, breaking conservation invariant"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in ticket reservation",
+      "line_start": 56,
+      "line_end": 63,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Availability check and decrement are not atomic, allowing overselling of tickets"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-atomic shared counter increment",
+      "line_start": 80,
+      "line_end": 84,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Read-yield-write on shared counter member causes lost updates under concurrent access"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "TOCTOU in inventory order processing",
+      "line_start": 95,
+      "line_end": 103,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Stock check and decrement through std::map are not atomic, allowing inventory to go negative"
+    },
+    {
+      "id": "VULN-007",
+      "cwe": "CWE-362",
+      "owasp": null,
+      "title": "Non-thread-safe lazy singleton",
+      "line_start": 117,
+      "line_end": 123,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "getInstance() uses check-then-create without synchronization, allowing multiple instances and memory leaks"
+    }
+  ]
+}

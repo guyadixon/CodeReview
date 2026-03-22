@@ -1,0 +1,73 @@
+{
+  "source_file": "main.cpp",
+  "language": "cpp",
+  "vulnerability_class": "integer-overflow",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in transaction fee calculation",
+      "line_start": 33,
+      "line_end": 34,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int amount_cents by int fee_basis_points can exceed INT_MAX"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in portfolio value accumulation",
+      "line_start": 41,
+      "line_end": 47,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Running int sum of net transaction values overflows when balance plus multiple large nets exceed INT_MAX"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in record buffer allocation",
+      "line_start": 50,
+      "line_end": 51,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "User-controlled record_count and record_size used in multiplication for malloc size without validation"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in compound interest loop",
+      "line_start": 59,
+      "line_end": 66,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Iterative compounding causes int current to grow exponentially and overflow mid-loop"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Signed overflow in 16-bit hash computation",
+      "line_start": 69,
+      "line_end": 73,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "int16_t hash accumulator overflows via multiply-and-add cycle with integer promotion and narrowing"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-190",
+      "owasp": null,
+      "title": "Integer overflow in amount scaling",
+      "line_start": 77,
+      "line_end": 79,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Multiplication of int amount by int numerator from user input can exceed INT_MAX"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "source_file": "app.js",
+  "language": "javascript",
+  "vulnerability_class": "security-misconfiguration",
+  "findings": [
+    {
+      "id": "VULN-001",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Overly permissive CORS with credential support",
+      "line_start": 13,
+      "line_end": 19,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "CORS middleware configured with origin: true and credentials: true allowing any origin to make authenticated requests"
+    },
+    {
+      "id": "VULN-002",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Server version information disclosure via response headers",
+      "line_start": 46,
+      "line_end": 49,
+      "complexity_level": "Obvious",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "Middleware explicitly sets X-Powered-By and Server headers revealing exact Express and Node.js versions"
+    },
+    {
+      "id": "VULN-003",
+      "cwe": "CWE-611",
+      "owasp": "A05",
+      "title": "XML External Entity processing enabled in product import",
+      "line_start": 82,
+      "line_end": 83,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Easily_Detectable",
+      "description": "libxmljs2 parseXml called with noent: true and nonet: false enabling XXE attacks"
+    },
+    {
+      "id": "VULN-004",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Verbose error responses expose stack traces to clients",
+      "line_start": 155,
+      "line_end": 162,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Global error handler returns error name, message, full stack trace, request path, and method in JSON response"
+    },
+    {
+      "id": "VULN-005",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Unrestricted settings modification without authentication",
+      "line_start": 131,
+      "line_end": 137,
+      "complexity_level": "Nuanced",
+      "detection_difficulty": "Likely_Missed",
+      "description": "PUT /api/settings allows any unauthenticated user to modify security-critical application settings"
+    },
+    {
+      "id": "VULN-006",
+      "cwe": "CWE-16",
+      "owasp": "A05",
+      "title": "Diagnostics endpoint exposes credentials and environment variables",
+      "line_start": 139,
+      "line_end": 152,
+      "complexity_level": "Moderate",
+      "detection_difficulty": "Pattern_Dependent",
+      "description": "Admin diagnostics returns database credentials, process.env, and system information"
+    }
+  ]
+}
